@@ -5,3 +5,7 @@
 
 # Generated audit artifacts
 .lighthouse-home*.json
+
+# Local CMS artifacts
+cms/cms.sqlite
+cms/.cursor/
