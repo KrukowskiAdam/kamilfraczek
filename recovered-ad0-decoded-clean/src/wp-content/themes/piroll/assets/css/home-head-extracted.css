@@ -1,0 +1,16 @@
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+
+.vp-id-484 .vp-portfolio__items {
+  --vp-items__gap: 0px;
+}
+.vp-id-484 .vp-portfolio__items-style-fade {
+  --vp-items-style-fade--image__border-radius: 0;
+}
+
+.nk-main {
+  background-color: #fff;
+}
+
+html:not(.vp-lazyload-enabled):not(.js) .vp-lazyload {
+  display: none;
+}
