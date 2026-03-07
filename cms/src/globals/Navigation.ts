@@ -8,6 +8,19 @@ export const Navigation: GlobalConfig = {
   },
   fields: [
     {
+      name: 'logoLink',
+      label: 'Logo link',
+      type: 'text',
+      required: true,
+      defaultValue: '/',
+    },
+    {
+      name: 'logoImage',
+      label: 'Logo image',
+      type: 'upload',
+      relationTo: 'media',
+    },
+    {
       name: 'items',
       type: 'array',
       required: true,

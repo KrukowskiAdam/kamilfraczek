@@ -179,6 +179,16 @@ export interface Page {
   slug: string;
   heroTitle?: string | null;
   heroSubtitle?: string | null;
+  layout?:
+    | {
+        title: string;
+        description: string;
+        backgroundImage?: (number | null) | Media;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'hero';
+      }[]
+    | null;
   content?: {
     root: {
       type: string;
@@ -330,6 +340,19 @@ export interface PagesSelect<T extends boolean = true> {
   slug?: T;
   heroTitle?: T;
   heroSubtitle?: T;
+  layout?:
+    | T
+    | {
+        hero?:
+          | T
+          | {
+              title?: T;
+              description?: T;
+              backgroundImage?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
   content?: T;
   featuredImage?: T;
   seo?:
@@ -408,6 +431,8 @@ export interface SiteSetting {
  */
 export interface Navigation {
   id: number;
+  logoLink: string;
+  logoImage?: (number | null) | Media;
   items: {
     label: string;
     url: string;
@@ -441,6 +466,8 @@ export interface SiteSettingsSelect<T extends boolean = true> {
  * via the `definition` "navigation_select".
  */
 export interface NavigationSelect<T extends boolean = true> {
+  logoLink?: T;
+  logoImage?: T;
   items?:
     | T
     | {

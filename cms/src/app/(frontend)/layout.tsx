@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { getPayload } from 'payload'
 
 import config from '@/payload.config'
+import { NavLinks } from './NavLinks'
 import './styles.css'
 
 export const metadata = {
@@ -22,22 +23,28 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
 
   const navigation = await payload.findGlobal({
     slug: 'navigation',
-    depth: 0,
+    depth: 1,
   })
 
   const navItems = navigation.items && navigation.items.length > 0 ? navigation.items : fallbackItems
+  const logoLink = navigation.logoLink || '/'
+  const logoSrc =
+    typeof navigation.logoImage === 'object' && navigation.logoImage && 'url' in navigation.logoImage
+      ? navigation.logoImage.url || '/logo-placeholder.svg'
+      : '/logo-placeholder.svg'
 
   return (
     <html lang="pl" suppressHydrationWarning>
       <body>
         <header className="site-header">
-          <nav className="site-nav" aria-label="Główna nawigacja">
-            {navItems.map((item, index) => (
-              <Link key={`${item.url}-${index}`} href={item.url}>
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="site-nav-container">
+            <Link href={logoLink} className="site-brand" aria-label="Strona główna">
+              <img src={logoSrc} alt="Logo" className="site-brand-logo" />
+            </Link>
+            <nav className="site-nav" aria-label="Główna nawigacja">
+              <NavLinks items={navItems} />
+            </nav>
+          </div>
         </header>
         <main className="site-main">{children}</main>
       </body>

@@ -7,6 +7,7 @@ export async function getPageBySlug(slug: string) {
 
   const result = await payload.find({
     collection: 'pages',
+    depth: 1,
     where: {
       slug: {
         equals: slug,

@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { HeroBlock } from '../blocks/Hero'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -34,6 +35,12 @@ export const Pages: CollectionConfig = {
     {
       name: 'heroSubtitle',
       type: 'textarea',
+    },
+    {
+      name: 'layout',
+      label: 'Sekcje strony',
+      type: 'blocks',
+      blocks: [HeroBlock],
     },
     {
       name: 'content',
